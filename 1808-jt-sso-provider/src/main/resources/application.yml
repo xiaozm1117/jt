@@ -1,0 +1,38 @@
+server:
+  port: 7900
+  
+spring:
+  application:
+    name: jt-sso-provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jtdb
+    username: root
+    password: root
+    
+  redis: 
+    cache.clusterNodes: 192.168.43.20:7000,192.168.43.20:7001,192.168.43.20:7002,192.168.43.20:7003,192.168.43.20:7004,192.168.43.20:7005,192.168.43.20:7006,192.168.43.20:7007,192.168.43.20:7008
+    cache.commandTimeout: 5000
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+
+mybatis:
+  mapUnderscoreToCamelCase: true
+  typeAliasesPackage: cn.jt.sso.pojo
+  mapperLocations: classpath:mybatis/mappers/*.xml
+  
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+ribbon:
+  eureka:
+    enabled: true
+    
+logging:
+  level: 
+    cn.jt.sso.mapper: debug
